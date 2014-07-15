@@ -10,7 +10,7 @@ angular.module('videosharing-embed')
 				element[0].style.paddingTop = '56.25%'; // Default is 1920 x 1080 Ratio
 
 				function process() {
-					var url = attrs.href;
+					var url = attrs.src;
 					if (url === undefined) {
 						return;
 					}
@@ -69,8 +69,8 @@ angular.module('videosharing-embed')
 						process();
 					}
 				}, true);
-				//handle the use of both ng-href and href
-				attrs.$observe('href', process);
+				//handle the use of both ng-src and src
+				attrs.$observe('src', process);
 			}
 		};
 	});

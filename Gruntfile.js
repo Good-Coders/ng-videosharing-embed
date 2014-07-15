@@ -12,6 +12,21 @@ module.exports = function (grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		datetime: Date.now(),
 
+		watch: {
+			js: {
+				files: ['src/scripts/**/*.js'],
+				tasks: ['ngmin:module','concat:module', 'uglify:module']
+			},
+			less: {
+				files: ['src/styles/less/{,*/}*.less'],
+				tasks: ['less:module']
+			},
+			styles: {
+				files: ['temp/styles/{,*/}*.css'],
+				tasks: ['copy:css']
+			}
+		},
+
 		less: {
 			options: {
 				relativeUrls: true
@@ -90,6 +105,7 @@ module.exports = function (grunt) {
 
 	// Default task.
 	grunt.registerTask('default', ['less:module','copy:css','ngmin:module','concat:module', 'uglify:module']);
+	grunt.registerTask('develop', ['watch']);
 	grunt.registerTask('test', ['karma:unit']);
 	grunt.registerTask('test-c9', ['karma:unitc9']);
 };
