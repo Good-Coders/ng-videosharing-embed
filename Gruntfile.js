@@ -120,6 +120,6 @@ module.exports = function (grunt) {
 	grunt.registerTask('test-c9', ['karma:unitc9']);
 	grunt.registerTask('release', function (target) {
 		target = target || 'patch';
-		grunt.task.run(['bump-only:'+target,'default']);
+		grunt.task.run(['bump-only:'+target,'default','bump-commit']);
 	});
 };
