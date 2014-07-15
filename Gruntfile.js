@@ -12,6 +12,15 @@ module.exports = function (grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		datetime: Date.now(),
 
+		bump: {
+			options: {
+				files: ['package.json', 'bower.json'],
+				commitMessage: 'chore: release v%VERSION%',
+				commitFiles: ['package.json', 'bower.json', 'build/ng-videosharing-embed.min.js'],
+				updateConfigs: ['pkg']
+			}
+		},
+
 		watch: {
 			js: {
 				files: ['src/scripts/**/*.js'],
@@ -93,6 +102,7 @@ module.exports = function (grunt) {
 				]
 			}
 		},
+
 		karma: {
 			unit: {
 				configFile: 'config/karma.conf.js'
@@ -108,4 +118,8 @@ module.exports = function (grunt) {
 	grunt.registerTask('develop', ['watch']);
 	grunt.registerTask('test', ['karma:unit']);
 	grunt.registerTask('test-c9', ['karma:unitc9']);
+	grunt.registerTask('release', function (target) {
+		target = target || 'patch';
+		grunt.task.run(['bump-only:'+target,'default']);
+	});
 };
