@@ -4,29 +4,32 @@
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../build/ng-videosharing-embed.css">
 
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.js"></script>
 	<script src="../build/ng-videosharing-embed.min.js"></script>
+    <script src="controller.js"></script>
 </head>
 <body>
-<div class="container">
+<div class="container" ng-controller="testCtrl">
 	<div class="jumbotron text-center">
 		<h1>Angular Embed Video</h1>
 		<p>Now you can embed responsive youtube, vimeo, and dailymotion videos with ease!</p>
 	</div>
-	<div class="row">
+    <button type="button" ng-click="toggleVideo()" class="btn btn-default">Toggle Video</button>
+    <div class="row">
 		<div class="col-lg-4 col-md-6">
 			<h2>YouTube</h2>
-			<embed-video ng-src="https://youtu.be/LOKyEt36Kjc"></embed-video>
+            <pre>{{video|json}}</pre>
+			<embed-video url="{{video}}"></embed-video>
 			<p>https://youtu.be/LOKyEt36Kjc</p>
 		</div>
 		<div class="col-lg-4 col-md-6">
 			<h2>Vimeo</h2>
-			<embed-video ng-src="http://vimeo.com/53953"></embed-video>
+			<embed-video url="http://vimeo.com/53881651"></embed-video>
 			<p>http://vimeo.com/53953</p>
 		</div>
 		<div class="col-lg-4 col-md-6">
 			<h2>Dailymotion</h2>
-			<embed-video ng-src="http://www.dailymotion.com/video/x1alnp5_aidol-akb48-group-air-handshake-nmb48-team-n-yamamoto-sayaka_people"></embed-video>
+			<embed-video url="http://www.dailymotion.com/video/x1alnp5_aidol-akb48-group-air-handshake-nmb48-team-n-yamamoto-sayaka_people"></embed-video>
 			<p>http://www.dailymotion.com/video/x1alnp5_aidol-akb48-group-air-handshake-nmb48-team-n-yamamoto-sayaka_people</p>
 		</div>
 	</div>
